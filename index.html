@@ -1,0 +1,901 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casa Kimo | Surf • Arte • Cultura | Garopaba</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --color-sand: #F5F0E8;
+            --color-brick: #C75B3F;
+            --color-brick-dark: #A84A32;
+            --color-ocean: #2C5F6F;
+            --color-ocean-light: #4A8A9C;
+            --color-wood: #8B6914;
+            --color-charcoal: #2D2D2D;
+            --color-cream: #FAF8F5;
+            --color-sky: #87CEEB;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            background-color: var(--color-cream);
+            color: var(--color-charcoal);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Playfair Display', serif;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            background: linear-gradient(135deg, rgba(44, 95, 111, 0.85), rgba(139, 105, 20, 0.75)),
+                        url('Amazon-Tastes-Garopaba-Casa-Kimo-26.webp');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 150px;
+            background: linear-gradient(to top, var(--color-cream), transparent);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 800px;
+        }
+
+        .hero-logo {
+            width: 120px;
+            height: 120px;
+            background: var(--color-cream);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 2rem;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+
+        .hero-logo svg {
+            width: 80px;
+            height: 80px;
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 8vw, 5rem);
+            color: white;
+            text-shadow: 2px 2px 20px rgba(0,0,0,0.3);
+            margin-bottom: 0.5rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-tagline {
+            font-size: clamp(1rem, 2.5vw, 1.3rem);
+            color: rgba(255,255,255,0.95);
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: rgba(255,255,255,0.9);
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            line-height: 1.8;
+        }
+
+        .hero-cta {
+            display: inline-flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            padding: 1rem 2.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: var(--color-brick);
+            color: white;
+            box-shadow: 0 4px 15px rgba(199, 91, 63, 0.4);
+        }
+
+        .btn-primary:hover {
+            background: var(--color-brick-dark);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(199, 91, 63, 0.5);
+        }
+
+        .btn-secondary {
+            background: rgba(255,255,255,0.2);
+            color: white;
+            border: 2px solid white;
+            backdrop-filter: blur(10px);
+        }
+
+        .btn-secondary:hover {
+            background: white;
+            color: var(--color-ocean);
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            color: white;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateX(-50%) translateY(0); }
+            40% { transform: translateX(-50%) translateY(-10px); }
+            60% { transform: translateX(-50%) translateY(-5px); }
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 1.5rem 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            background: rgba(250, 248, 245, 0.95);
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 1rem 2rem;
+        }
+
+        nav.scrolled .nav-logo {
+            color: var(--color-ocean);
+        }
+
+        nav.scrolled .nav-links a {
+            color: var(--color-charcoal);
+        }
+
+        .nav-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 5vw, 3rem);
+            color: var(--color-ocean);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: #666;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* History Section */
+        .history {
+            background: var(--color-cream);
+        }
+
+        .history-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .history-image {
+            position: relative;
+        }
+
+        .history-image img {
+            width: 100%;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+
+        .history-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            right: 20px;
+            bottom: 20px;
+            border: 3px solid var(--color-brick);
+            border-radius: 20px;
+            z-index: -1;
+        }
+
+        .history-content h3 {
+            font-size: 2rem;
+            color: var(--color-brick);
+            margin-bottom: 1rem;
+        }
+
+        .history-content p {
+            margin-bottom: 1.5rem;
+            color: #555;
+            line-height: 1.8;
+        }
+
+        .history-stats {
+            display: flex;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--color-ocean);
+            font-weight: 700;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Menu Section */
+        .menu {
+            background: linear-gradient(to bottom, var(--color-cream), var(--color-sand));
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .menu-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2.5rem;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+
+        .menu-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.12);
+        }
+
+        .menu-icon {
+            width: 80px;
+            height: 80px;
+            background: var(--color-sand);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2.5rem;
+        }
+
+        .menu-card h3 {
+            font-size: 1.5rem;
+            color: var(--color-charcoal);
+            margin-bottom: 0.5rem;
+        }
+
+        .menu-card p {
+            color: #777;
+            font-size: 0.95rem;
+        }
+
+        /* Culture Section */
+        .culture {
+            background: var(--color-ocean);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .culture::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 600px;
+            height: 600px;
+            background: rgba(255,255,255,0.03);
+            border-radius: 50%;
+        }
+
+        .culture .section-header h2 {
+            color: white;
+        }
+
+        .culture .section-header p {
+            color: rgba(255,255,255,0.8);
+        }
+
+        .culture-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .culture-item {
+            text-align: center;
+            padding: 2rem;
+            border-radius: 15px;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .culture-item:hover {
+            background: rgba(255,255,255,0.15);
+            transform: scale(1.05);
+        }
+
+        .culture-item svg {
+            width: 50px;
+            height: 50px;
+            margin-bottom: 1rem;
+            color: var(--color-sand);
+        }
+
+        .culture-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .culture-item p {
+            color: rgba(255,255,255,0.8);
+            font-size: 0.95rem;
+        }
+
+        /* Location Section */
+        .location {
+            background: var(--color-cream);
+        }
+
+        .location-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .location-info h3 {
+            font-size: 1.8rem;
+            color: var(--color-ocean);
+            margin-bottom: 1rem;
+        }
+
+        .location-info p {
+            color: #555;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .location-details {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .location-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .location-item svg {
+            width: 24px;
+            height: 24px;
+            color: var(--color-brick);
+        }
+
+        .location-map {
+            background: var(--color-sand);
+            border-radius: 20px;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .location-map iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 20px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--color-charcoal);
+            color: white;
+            padding: 4rem 2rem 2rem;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto 3rem;
+        }
+
+        .footer-brand h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: #aaa;
+            line-height: 1.7;
+        }
+
+        .footer-links h4 {
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 1.5rem;
+            color: var(--color-sand);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: #aaa;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: white;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            background: var(--color-brick);
+            transform: translateY(-3px);
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            fill: white;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid #444;
+            color: #888;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 900px) {
+            .history-grid,
+            .location-content {
+                grid-template-columns: 1fr;
+            }
+
+            .culture-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .social-links {
+                justify-content: center;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="#" class="nav-logo">Casa Kimo</a>
+        <ul class="nav-links">
+            <li><a href="#historia">História</a></li>
+            <li><a href="#cardapio">Cardápio</a></li>
+            <li><a href="#cultura">Cultura</a></li>
+            <li><a href="#localizacao">Localização</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo">
+                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="50" cy="50" r="45" stroke="#2C5F6F" stroke-width="3"/>
+                    <path d="M30 55 Q50 35 70 55" stroke="#C75B3F" stroke-width="4" fill="none" stroke-linecap="round"/>
+                    <circle cx="35" cy="45" r="5" fill="#2C5F6F"/>
+                    <circle cx="65" cy="45" r="5" fill="#2C5F6F"/>
+                    <path d="M25 70 Q50 85 75 70" stroke="#8B6914" stroke-width="3" fill="none" stroke-linecap="round"/>
+                </svg>
+            </div>
+            <h1>Casa Kimo</h1>
+            <p class="hero-tagline">Surf • Arte • Cultura</p>
+            <p class="hero-description">
+                Uma casa centenária de tijolinhos e janelas azuis, trazida da Serra do Rio do Rastro 
+                para abraçar o mar de Garopaba. Onde o sabor encontra a alma surfista.
+            </p>
+            <div class="hero-cta">
+                <a href="#cardapio" class="btn btn-primary">Conheça o Menu</a>
+                <a href="#historia" class="btn btn-secondary">Nossa História</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M12 5v14M5 12l7 7 7-7"/>
+            </svg>
+        </div>
+    </section>
+
+    <!-- History Section -->
+    <section class="history" id="historia">
+        <div class="container">
+            <div class="section-header">
+                <h2>Uma Casa com História</h2>
+                <p>De uma estrutura centenária na serra para o coração da cultura surfista de Garopaba</p>
+            </div>
+            <div class="history-grid">
+                <div class="history-image">
+                    <img src="Amazon-Tastes-Garopaba-Casa-Kimo-26.webp" alt="Casa Kimo - Fachada">
+                </div>
+                <div class="history-content">
+                    <h3>Herança e Reinvenção</h3>
+                    <p>
+                        A Casa Kimo é uma das construções mais charmosas de Garopaba. Com seus tijolinhos 
+                        à vista e janelas azuis características, essa estrutura <strong>centenária</strong> foi 
+                        trazida da Serra do Rio do Rastro e cuidadosamente remontada no caminho da 
+                        Praia do Silveira.
+                    </p>
+                    <p>
+                        Mais do que um espaço gastronômico, somos um ponto de encontro para surfistas, 
+                        artistas e viajantes. Um lugar onde a tradição encontra a criatividade, e cada 
+                        detalhe conta uma história de preservação e amor pelo lugar.
+                    </p>
+                    <div class="history-stats">
+                        <div class="stat">
+                            <div class="stat-number">100+</div>
+                            <div class="stat-label">Anos de História</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">80km</div>
+                            <div class="stat-label">de Floripa</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">∞</div>
+                            <div class="stat-label">Ondas Curtidas</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu" id="cardapio">
+        <div class="container">
+            <div class="section-header">
+                <h2>Sabor e Aconchego</h2>
+                <p>Delícias cuidadosamente preparadas para acompanhar seu momento em Garopaba</p>
+            </div>
+            <div class="menu-grid">
+                <div class="menu-card">
+                    <div class="menu-icon">🍔</div>
+                    <h3>Artesanal Burger</h3>
+                    <p>Hambúrguer artesanal com ingredientes selecionados, pão fresco e combinações únicas de sabores no melhor estilo praiano.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon">🍨</div>
+                    <h3>Gelato Artesanal</h3>
+                    <p>Sorvetes italianos cremosos nos sabores mais refrescantes. Perfeito para um dia de sol e surf.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon">☕</div>
+                    <h3>Café Especial</h3>
+                    <p>Cafés especiais preparados com grãos selecionados. Do espresso ao cappuccino, cada xícara é uma experiência.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon">🍪</div>
+                    <h3>Cookies Frescos</h3>
+                    <p>Cookies caseiros, crocantes por fora e macios por dentro. Feitos na hora com muito carinho.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon">🥤</div>
+                    <h3>Cold Brew</h3>
+                    <p>Nosso café extraído a frio por 12 horas. Suave, refrescante e com a dose certa de energia para o dia.</p>
+                </div>
+                <div class="menu-card">
+                    <div class="menu-icon">🌊</div>
+                    <h3>Vibe Surf</h3>
+                    <p>Tudo isso em um ambiente único, rodeado de arte, cultura e a energia especial de Garopaba.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Culture Section -->
+    <section class="culture" id="cultura">
+        <div class="container">
+            <div class="section-header">
+                <h2>Surf • Arte • Cultura</h2>
+                <p>Mais do que um café, um espaço de expressão e encontro</p>
+            </div>
+            <div class="culture-grid">
+                <div class="culture-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                    <h3>Surf</h3>
+                    <p>Localizado próximo à Praia do Silveira, um dos point breaks mais famosos do Brasil. O point dos surfistas.</p>
+                </div>
+                <div class="culture-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M12 19l7-7 3 3-7 7-3-3z"/>
+                        <path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/>
+                        <path d="M2 2l7.586 7.586"/>
+                        <circle cx="11" cy="11" r="2"/>
+                    </svg>
+                    <h3>Arte</h3>
+                    <p>Curadoria de peças locais: arte, artesanato, roupas e pranchas. Um espaço vivo de criatividade.</p>
+                </div>
+                <div class="culture-item">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                        <circle cx="9" cy="7" r="4"/>
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <h3>Cultura</h3>
+                    <p>Eventos, encontros e celebrações da vida praiana. Onde a comunidade se encontra e as histórias se criam.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Location Section -->
+    <section class="location" id="localizacao">
+        <div class="container">
+            <div class="section-header">
+                <h2>Onde Estamos</h2>
+                <p>Venha nos visitar em Garopaba, Santa Catarina</p>
+            </div>
+            <div class="location-content">
+                <div class="location-info">
+                    <h3>Caminho da Praia do Silveira</h3>
+                    <p>
+                        Localizada estrategicamente no caminho da Praia do Silveira, a Casa Kimo é 
+                        parada obrigatória para quem busca ondas perfeitas ou apenas um momento de 
+                        desconexão em um ambiente único.
+                    </p>
+                    <div class="location-details">
+                        <div class="location-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span>Estrada para Praia do Silveira, Garopaba - SC</span>
+                        </div>
+                        <div class="location-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <circle cx="12" cy="12" r="10"/>
+                                <path d="M12 6v6l4 2"/>
+                            </svg>
+                            <span>Aberto todos os dias</span>
+                        </div>
+                        <div class="location-item">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                <path d="M22 6l-10 7L2 6"/>
+                            </svg>
+                            <span>contato@casakimo.com.br</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="location-map">
+                    <iframe 
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3478.0!2d-48.62!3d-28.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9526d46d219fca1f%3A0x3c5d6c!2sGaropaba%2C%20SC!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
+                        allowfullscreen="" 
+                        loading="lazy">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>Casa Kimo</h3>
+                <p>
+                    Surf • Arte • Cultura<br><br>
+                    Uma casa centenária que abraça o mar de Garopaba. 
+                    Venha fazer parte da nossa história.
+                </p>
+                <div class="social-links">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                    </a>
+                    <a href="#" aria-label="Facebook">
+                        <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                    </a>
+                </div>
+            </div>
+            <div class="footer-links">
+                <h4>Links</h4>
+                <ul>
+                    <li><a href="#historia">História</a></li>
+                    <li><a href="#cardapio">Cardápio</a></li>
+                    <li><a href="#cultura">Cultura</a></li>
+                    <li><a href="#localizacao">Localização</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Contato</h4>
+                <ul>
+                    <li><a href="mailto:contato@casakimo.com.br">contato@casakimo.com.br</a></li>
+                    <li><a href="#">Instagram</a></li>
+                    <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2026 Casa Kimo. Todos os direitos reservados. | Garopaba, Santa Catarina</p>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html>
