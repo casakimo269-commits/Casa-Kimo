@@ -15,7 +15,7 @@
             --color-ocean: #2C5F6F;
             --color-ocean-light: #4A8A9C;
             --color-wood: #8B6914;
-            --color-charcoal: #2D2D2D;
+            --color-charcoal: #282828;
             --color-cream: #FAF8F5;
             --color-sky: #87CEEB;
         }
@@ -31,14 +31,14 @@
         }
 
         body {
-            font-family: 'DM Sans', sans-serif;
+            font-family: 'Barlow', sans-serif;
             background-color: var(--color-cream);
             color: var(--color-charcoal);
             line-height: 1.6;
         }
 
         h1, h2, h3 {
-            font-family: 'Playfair Display', serif;
+            font-family: 'Barlow Medium', sans-serif;
         }
 
         /* Hero Section */
@@ -76,13 +76,14 @@
         .hero-logo {
             width: 120px;
             height: 120px;
-            background: var(--color-cream);
+            background: var(--color-charcoal);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 0 auto 2rem;
             box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+            overflow: hidden;
         }
 
         .hero-logo svg {
@@ -204,7 +205,6 @@
         }
 
         .nav-logo {
-            font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 700;
             color: white;
@@ -507,7 +507,7 @@
 
         .footer-grid {
             display: grid;
-            grid-template-columns: 2fr 1fr 1fr;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 3rem;
             max-width: 1200px;
             margin: 0 auto 3rem;
@@ -598,8 +598,14 @@
             }
 
             .footer-grid {
-                grid-template-columns: 1fr;
+                grid-template-columns: 1fr 1fr;
                 text-align: center;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
             }
 
             .social-links {
@@ -628,16 +634,11 @@
     <section class="hero">
         <div class="hero-content">
             <div class="hero-logo">
-                <svg viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <circle cx="50" cy="50" r="45" stroke="#2C5F6F" stroke-width="3"/>
-                    <path d="M30 55 Q50 35 70 55" stroke="#C75B3F" stroke-width="4" fill="none" stroke-linecap="round"/>
-                    <circle cx="35" cy="45" r="5" fill="#2C5F6F"/>
-                    <circle cx="65" cy="45" r="5" fill="#2C5F6F"/>
-                    <path d="M25 70 Q50 85 75 70" stroke="#8B6914" stroke-width="3" fill="none" stroke-linecap="round"/>
-                </svg>
+                <img src="./logo-casa-kimo.jpg" height="100" width="100" alt="Casa Kimo - Logo">
             </div>
             <h1>Casa Kimo</h1>
-            <p class="hero-tagline">Surf • Arte • Cultura</p>
+            <h2>Surf • Arte • Cultura</h2>
+            <p class="hero-tagline">Rua rio grande do sul 269 - Centro, Garopaba - SC, 88495-000</p>
             <p class="hero-description">
                 Uma casa centenária de tijolinhos e janelas azuis, trazida da Serra do Rio do Rastro 
                 para abraçar o mar de Garopaba. Onde o sabor encontra a alma surfista.
@@ -820,11 +821,7 @@
                     </div>
                 </div>
                 <div class="location-map">
-                    <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3478.0!2d-48.62!3d-28.02!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9526d46d219fca1f%3A0x3c5d6c!2sGaropaba%2C%20SC!5e0!3m2!1spt-BR!2sbr!4v1700000000000"
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7043.431099421888!2d-48.6221708950502!3d-28.033168549612505!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9526d1bd8151e94f%3A0xf504d8d4ad3512a2!2sKIMO!5e0!3m2!1sen!2sbr!4v1772904412087!5m2!1sen!2sbr" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                 </div>
             </div>
         </div>
@@ -864,6 +861,15 @@
                     <li><a href="mailto:contato@casakimo.com.br">contato@casakimo.com.br</a></li>
                     <li><a href="#">Instagram</a></li>
                     <li><a href="#">Facebook</a></li>
+                </ul>
+            </div>
+            <div class="footer-links">
+                <h4>Parceiros</h4>
+                <ul>
+                    <li><a href="https://www.instagram.com/lorenza.gelateria/" target="_blank">Lorenza Gelateria</a></li>
+                    <li><a href="https://www.instagram.com/gimme_grill_burgers/" target="_blank">Gimme Grill Burgers</a></li>
+                    <li><a href="https://www.instagram.com/cafedokimo/" target="_blank">Café do Kimo</a></li>
+                    <li><a href="https://instagram.com/cookiioficial/" target="_blank">Cookii</a></li>
                 </ul>
             </div>
         </div>
