@@ -1,0 +1,21 @@
+# robots.txt - Casa Kimo
+# https://casakimo.com.br
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://casakimo.com.br/sitemap.xml
+
+# Regras para bots específicos
+User-agent: Googlebot
+Allow: /
+Crawl-delay: 1
+
+User-agent: Bingbot
+Allow: /
+Crawl-delay: 1
+
+# Bloquear acesso a arquivos desnecessários
+Disallow: /*.json$
+Disallow: /README.md
