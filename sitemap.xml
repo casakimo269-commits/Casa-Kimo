@@ -8,7 +8,7 @@
     <!-- Homepage -->
     <url>
         <loc>https://casakimo.com.br/</loc>
-        <lastmod>2026-03-07</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
         <image:image>
@@ -26,7 +26,7 @@
     <!-- Seção História -->
     <url>
         <loc>https://casakimo.com.br/#historia</loc>
-        <lastmod>2026-03-07</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -34,7 +34,7 @@
     <!-- Seção Cardápio -->
     <url>
         <loc>https://casakimo.com.br/#cardapio</loc>
-        <lastmod>2026-03-07</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -42,7 +42,7 @@
     <!-- Seção Cultura -->
     <url>
         <loc>https://casakimo.com.br/#cultura</loc>
-        <lastmod>2026-03-07</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
@@ -50,7 +50,7 @@
     <!-- Seção Localização -->
     <url>
         <loc>https://casakimo.com.br/#localizacao</loc>
-        <lastmod>2026-03-07</lastmod>
+        <lastmod>2026-03-10</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
